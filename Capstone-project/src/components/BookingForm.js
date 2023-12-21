@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 const BookingForm = (props) => {
     const [date, setDate] = useState("");
-    const [times, setTimes] = useState("");
     const [guests, setGuests] = useState("");
     const [occasion, setOccasion] = useState("");
 
@@ -28,18 +27,12 @@ const BookingForm = (props) => {
 
                         <div>
                             <label htmlFor='book-time'>Choose time:</label>
-                            <select id='book-time' value ={times} onChange={(e) => setTimes(e.target.value)}>
-                                <option value="">Select time</option>
-                                {
-                                    props.availableTimes.availableTimes.map(availableTimes => {return <option key=
-                                        {availableTimes}>{availableTimes}</option>})
-                                }
-                            </select>
+                            <input id='book-time' type='time' min='08:00' max='23:30' required/>
                         </div>
 
                         <div>
                             <label htmlFor='book-guests'>Number of guests:</label>
-                            <input id="book-guests" type='number' min="1" value={guests} onChange={(e) => setGuests(e.target.value)}/>
+                            <input id="book-guests" type='number' min="1" max="10" required value={guests} onChange={(e) => setGuests(e.target.value)}/>
                         </div>
 
                         <div>
@@ -53,7 +46,7 @@ const BookingForm = (props) => {
                         </div>
 
                         <div classsName='btnRecieve'>
-                            <input aria-label='on Click' type='submit' value={"Make Your Resevation"}/>
+                           <input aria-label='on Click' type='submit' value={"Make Your Resevation"}/>
                         </div>
                     </fieldset>
                 </form>
